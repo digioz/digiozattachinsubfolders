@@ -1,0 +1,26 @@
+imports:
+    - { resource: parameters.yml }
+
+services:
+    digioz.digiozattachinsubfolders.controller.acp:
+        class: digioz\digiozattachinsubfolders\controller\acp_controller
+        arguments:
+            - '@config'
+            - '@language'
+            - '@log'
+            - '@request'
+            - '@template'
+            - '@user'
+
+    digioz.digiozattachinsubfolders.service:
+        class: digioz\digiozattachinsubfolders\service
+        arguments:
+            - '@user'
+            - '%digioz.digiozattachinsubfolders.tables.digiozattachinsubfolders_table%'
+
+    digioz.digiozattachinsubfolders.listener:
+        class: digioz\digiozattachinsubfolders\event\main_listener
+        arguments:
+            - '@language'
+        tags:
+            - { name: event.listener }
