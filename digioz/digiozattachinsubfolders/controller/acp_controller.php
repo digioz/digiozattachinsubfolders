@@ -75,6 +75,7 @@ class acp_controller
 		// Is the form being submitted to us?
 		if ($this->request->is_set_post('submit'))
 		{
+			// print_r($this->request);
 			// Test if the submitted form is valid
 			if (!check_form_key('digioz_digiozattachinsubfolders_acp'))
 			{
@@ -86,6 +87,9 @@ class acp_controller
 			{
 				// Set the options the user configured
 				$this->config->set('digioz_digiozattachinsubfolders_goodbye', $this->request->variable('digioz_digiozattachinsubfolders_goodbye', 0));
+				$this->config->set('digioz_digioz_attachmentstorage', $this->request->variable('digioz_digioz_attachmentstorage', ''));
+				$this->config->set('digioz_digioz_organize_subfolder', $this->request->variable('digioz_digioz_organize_subfolder', 0));
+				$this->config->set('digioz_digioz_selectstorage', $this->request->variable('digioz_digioz_selectstorage', 'local'));
 
 				// Add option settings change action to the admin log
 				$this->log->add('admin', $this->user->data['user_id'], $this->user->ip, 'LOG_ACP_DIGIOZATTACHINSUBFOLDERS_SETTINGS');
@@ -106,6 +110,9 @@ class acp_controller
 			'U_ACTION'		=> $this->u_action,
 
 			'DIGIOZ_DIGIOZATTACHINSUBFOLDERS_GOODBYE'	=> (bool) $this->config['digioz_digiozattachinsubfolders_goodbye'],
+			'DIGIOZ_ATTACHMENT_STORAGE'	=> $this->config['digioz_digioz_attachmentstorage'],
+			'DIGIOZ_ORGANIZE_SUBFOLDER'	=> (bool) $this->config['digioz_digioz_organize_subfolder'],
+			'DIGIOZ_SELECT_STORAGE' => $this->config['digioz_digioz_selectstorage'],
 		]);
 	}
 

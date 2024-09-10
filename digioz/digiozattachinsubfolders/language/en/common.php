@@ -44,4 +44,8 @@ $lang = array_merge($lang, [
 	'ACP_DIGIOZATTACHINSUBFOLDERS_GOODBYE'			=> 'Should say goodbye?',
 	'ACP_DIGIOZATTACHINSUBFOLDERS_SETTING_SAVED'	=> 'Settings have been saved successfully!',
 
+	'ACP_DIZIOZ_ATTACHMENTSTORAGE'	=>	'Attachment Storage',
+	'ACP_DIGIOZ_PATH' => 'Path',
+	'ACP_DIGIOZ_ORGANIZE_SUBFOLDER' => 'Organize in subfolders',
+	'ACP_DIZIOZ_SELECT_STORAGE' => 'Select Storage',
 ]);

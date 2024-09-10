@@ -11,12 +11,34 @@
 
 <form id="digioz_digiozattachinsubfolders_acp" name="digioz_digiozattachinsubfolders_acp" method="post" action="{{ U_ACTION }}">
 
-	<fieldset>
+	<!-- <fieldset>
 		<legend>{{ lang('SETTINGS') }}</legend>
 		<dl>
 			<dt><label for="digioz_digiozattachinsubfolders_goodbye">{{ lang('ACP_DIGIOZATTACHINSUBFOLDERS_GOODBYE') ~ lang('COLON') }}</label></dt>
 			<dd><label><input type="radio" class="radio" name="digioz_digiozattachinsubfolders_goodbye" value="1"{% if DIGIOZ_DIGIOZATTACHINSUBFOLDERS_GOODBYE %} checked="checked"{% endif %} /> {{ lang('YES') }}</label>
 				<label><input type="radio" class="radio" name="digioz_digiozattachinsubfolders_goodbye" value="0"{% if not DIGIOZ_DIGIOZATTACHINSUBFOLDERS_GOODBYE %} checked="checked"{% endif %} /> {{ lang('NO') }}</label></dd>
+		</dl>
+	</fieldset> -->
+	<fieldset>
+		<legend>{{ lang('ACP_DIZIOZ_ATTACHMENTSTORAGE') }}</legend>
+		<dl>
+			<dt><label for="select_storage">{{ lang('ACP_DIZIOZ_SELECT_STORAGE') }}</label></dt>
+			<dd><select name="digioz_digioz_selectstorage" id="select_storage">
+				<option value="local"<!-- IF DIGIOZ_SELECT_STORAGE == 'local' --> selected="selected"<!-- ENDIF -->> Local </option>
+				<option value="s3"<!-- IF DIGIOZ_SELECT_STORAGE == 's3' --> selected="selected"<!-- ENDIF -->> S3 </option>
+			</select></dd>
+		</dl>
+	</fieldset>
+	<fieldset>
+		<legend>{{ lang('ACP_DIZIOZ_ATTACHMENTSTORAGE') }} - Local</legend>
+		<dl>
+			<dt><label for="digioz_digiozattachmentstorage">{{ lang('ACP_DIGIOZ_PATH') }}</label></dt>
+			<dd><label><input type="text" name="digioz_digioz_attachmentstorage" value="{DIGIOZ_ATTACHMENT_STORAGE}"/></label></dd>
+		</dl>
+		<dl>
+			<dt><label for="digioz_digiozorganize_subfolder">{{ lang('ACP_DIGIOZ_ORGANIZE_SUBFOLDER') }}</label></dt>
+			<dd><label><input type="radio" class="radio" name="digioz_digioz_organize_subfolder" value="1" {% if DIGIOZ_ORGANIZE_SUBFOLDER %} checked="checked"{% endif %}/> {{ lang('ENABLE') }}</label>
+				<label><input type="radio" class="radio" name="digioz_digioz_organize_subfolder" value="0" {% if not DIGIOZ_ORGANIZE_SUBFOLDER %} checked="checked"{% endif %}/> {{ lang('DISABLE') }}</label></dd>
 		</dl>
 	</fieldset>
 
