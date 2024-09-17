@@ -24,3 +24,15 @@ services:
             - '@language'
         tags:
             - { name: event.listener }
+
+    digioz.digiozattachinsubfolders.save_listener:
+        class: digioz\digiozattachinsubfolders\event\save_listener
+        tags:
+            - { name: event.listener }
+
+    digioz.digiozattachinsubfolders.read_listener:
+        class: digioz\digiozattachinsubfolders\event\read_listener
+        arguments:
+            - '@path_helper'
+        tags:
+            - { name: event.listener }

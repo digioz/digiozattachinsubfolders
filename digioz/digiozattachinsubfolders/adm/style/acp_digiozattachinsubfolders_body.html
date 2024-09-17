@@ -19,6 +19,25 @@
 				<label><input type="radio" class="radio" name="digioz_digiozattachinsubfolders_goodbye" value="0"{% if not DIGIOZ_DIGIOZATTACHINSUBFOLDERS_GOODBYE %} checked="checked"{% endif %} /> {{ lang('NO') }}</label></dd>
 		</dl>
 	</fieldset> -->
+	<table class="table1 zebra-table fixed-width-table">
+		<thead>
+		<tr>
+			<th>{{ lang('ACP_DIZIOZ_STORAGENAME') }}</th>
+			<th>{{ lang('ACP_DIZIOZ_NUMBEROFFILES') }}</th>
+			<th>{{ lang('ACP_DIZIOZ_SIZE') }}</th>
+			<!-- <th>{{ lang('ACP_DIZIOZ_SPACE') }}</th> -->
+		</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td>{{ lang('ACP_DIZIOZ_ATTACHMENTSTORAGE') }}</td>
+				<td>{NO_OF_FILES}</td>
+				<td>{SIZE}</td>
+				<!-- <td></td> -->
+			</tr>
+		</tbody>
+	</table>
+
 	<fieldset>
 		<legend>{{ lang('ACP_DIZIOZ_ATTACHMENTSTORAGE') }}</legend>
 		<dl>
@@ -33,7 +52,7 @@
 		<legend>{{ lang('ACP_DIZIOZ_ATTACHMENTSTORAGE') }} - Local</legend>
 		<dl>
 			<dt><label for="digioz_digiozattachmentstorage">{{ lang('ACP_DIGIOZ_PATH') }}</label></dt>
-			<dd><label><input type="text" name="digioz_digioz_attachmentstorage" value="{DIGIOZ_ATTACHMENT_STORAGE}"/></label></dd>
+			<dd><label><input type="text" name="upload_path" value="{DIGIOZ_ATTACHMENT_STORAGE}"/></label></dd>
 		</dl>
 		<dl>
 			<dt><label for="digioz_digiozorganize_subfolder">{{ lang('ACP_DIGIOZ_ORGANIZE_SUBFOLDER') }}</label></dt>

@@ -87,7 +87,8 @@ class acp_controller
 			{
 				// Set the options the user configured
 				$this->config->set('digioz_digiozattachinsubfolders_goodbye', $this->request->variable('digioz_digiozattachinsubfolders_goodbye', 0));
-				$this->config->set('digioz_digioz_attachmentstorage', $this->request->variable('digioz_digioz_attachmentstorage', ''));
+				// $this->config->set('digioz_digioz_attachmentstorage', $this->request->variable('digioz_digioz_attachmentstorage', ''));
+				$this->config->set('upload_path', $this->request->variable('upload_path', ''));
 				$this->config->set('digioz_digioz_organize_subfolder', $this->request->variable('digioz_digioz_organize_subfolder', 0));
 				$this->config->set('digioz_digioz_selectstorage', $this->request->variable('digioz_digioz_selectstorage', 'local'));
 
@@ -110,9 +111,11 @@ class acp_controller
 			'U_ACTION'		=> $this->u_action,
 
 			'DIGIOZ_DIGIOZATTACHINSUBFOLDERS_GOODBYE'	=> (bool) $this->config['digioz_digiozattachinsubfolders_goodbye'],
-			'DIGIOZ_ATTACHMENT_STORAGE'	=> $this->config['digioz_digioz_attachmentstorage'],
+			'DIGIOZ_ATTACHMENT_STORAGE'	=> $this->config['upload_path'],
 			'DIGIOZ_ORGANIZE_SUBFOLDER'	=> (bool) $this->config['digioz_digioz_organize_subfolder'],
 			'DIGIOZ_SELECT_STORAGE' => $this->config['digioz_digioz_selectstorage'],
+			'NO_OF_FILES' => $this->config['num_files'],
+			'SIZE' => get_formatted_filesize($this->config['upload_dir_size'])
 		]);
 	}
 

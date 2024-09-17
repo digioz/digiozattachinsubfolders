@@ -3,7 +3,7 @@
     "type": "phpbb-extension",
     "description": "An extension which stores your forum attachments in subfolders instead of all at the same level in the files folder.",
     "homepage": "https://digioz.com",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "time": "2024-08-08",
     "license": "GPL-2.0-only",
     "authors": [

@@ -48,4 +48,9 @@ $lang = array_merge($lang, [
 	'ACP_DIGIOZ_PATH' => 'Path',
 	'ACP_DIGIOZ_ORGANIZE_SUBFOLDER' => 'Organize in subfolders',
 	'ACP_DIZIOZ_SELECT_STORAGE' => 'Select Storage',
+
+	'ACP_DIZIOZ_STORAGENAME' => 'Storage Name',
+	'ACP_DIZIOZ_NUMBEROFFILES' => 'No. of files',
+	'ACP_DIZIOZ_SIZE' => 'Size',
+	'ACP_DIZIOZ_SPACE' => 'Space',
 ]);
