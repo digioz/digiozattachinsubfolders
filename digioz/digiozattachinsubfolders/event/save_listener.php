@@ -39,6 +39,8 @@ class save_listener implements EventSubscriberInterface
         // Get the uploaded file details from the event
         global $phpbb_root_path;
 
+        global $attachment_data;
+
         // Get the attachment data from the event
         $attachment_data = $event['filedata'];
 
@@ -64,5 +66,7 @@ class save_listener implements EventSubscriberInterface
             // Update the attachment data to reflect the new file path
             $attachment_data['physical_filename'] = $subfolder_name . '/' . basename($attachment_data['physical_filename']);
         }
+
+        $event['attachment_data'] = $attachment_data;
     }
 }

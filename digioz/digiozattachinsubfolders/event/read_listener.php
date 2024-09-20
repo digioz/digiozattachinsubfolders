@@ -19,40 +19,45 @@ use Symfony\Component\HttpFoundation\Response;
 
 class read_listener implements EventSubscriberInterface
 {
-    protected $root_path;
-
-    public function __construct(path_helper $path_helper)
+    public function __construct()
     {
-        $this->root_path = $path_helper->get_phpbb_root_path();
+
     }
 
     public static function getSubscribedEvents()
     {
-        return [
-            'core.fileupload_before_read' => 'onFileRead',  // You'll need to hook into a specific event or use a custom one
-        ];
+        return array(
+            'core.download_file_send_to_browser_before' => 'on_download_file',
+        );
     }
 
-    public function onFileRead($event)
+    public function on_download_file($event)
     {
-        $filename = $event['filename']; // The filename to read
+        global $phpbb_root_path;
+        // Get the original file information
+        $attachment = $event['attachment'];
 
-        // Generate MD5 hash of the filename
-        $md5Hash = md5($filename);
-        $subFolder = substr($md5Hash, 0, 2);
-        $filePath = $this->root_path . 'files/' . $subFolder . '/' . $filename;
+        // Check if it's a file you're responsible for
+        if ($attachment['extension'] !== 'your_extension_specific') {
+            return;
+        }
+        
+        $folder = explode('_', $attachment['physical_filename']);
 
-        if (file_exists($filePath)) {
-            // Serve the file contents
-            $response = new Response(file_get_contents($filePath), 200, [
-                'Content-Type' => mime_content_type($filePath),
-                'Content-Disposition' => 'inline; filename="' . $filename . '"'
-            ]);
+        $md5_hash = $folder[1];
+        // Use the first two characters of the hash to create a subfolder
+        $subfolder_name = substr($md5_hash, 0, 2);
+        $subfolder = $phpbb_root_path . 'files/' . $subfolder_name . '/';
 
-            $response->send();  // Send the response
+        $full_file_path = $subfolder . $attachment['physical_filename'];
+
+        // Check if the file exists in the custom subfolder
+        if (file_exists($full_file_path) && is_readable($full_file_path)) {
+            // Override the file path with the path to your custom subfolder
+            $event['local_file'] = $full_file_path;
         } else {
-            // Handle file not found
-            throw new \Exception("File not found: $filename");
+            // Optionally, you can handle the case where the file is not found
+            trigger_error('File not found in custom subfolder.', E_USER_WARNING);
         }
     }
 }

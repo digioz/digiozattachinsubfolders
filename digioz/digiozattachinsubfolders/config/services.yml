@@ -29,10 +29,13 @@ services:
         class: digioz\digiozattachinsubfolders\event\save_listener
         tags:
             - { name: event.listener }
+    
+    digioz.digiozattachinsubfolders.update_attachment_data_listener:
+        class: digioz\digiozattachinsubfolders\event\update_attachment_data_listener
+        tags:
+            - { name: event.listener }
 
     digioz.digiozattachinsubfolders.read_listener:
         class: digioz\digiozattachinsubfolders\event\read_listener
-        arguments:
-            - '@path_helper'
         tags:
             - { name: event.listener }
