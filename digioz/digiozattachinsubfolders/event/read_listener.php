@@ -21,7 +21,6 @@ class read_listener implements EventSubscriberInterface
 {
     public function __construct()
     {
-
     }
 
     public static function getSubscribedEvents()
@@ -33,31 +32,26 @@ class read_listener implements EventSubscriberInterface
 
     public function on_download_file($event)
     {
-        global $phpbb_root_path;
         // Get the original file information
         $attachment = $event['attachment'];
+        $physical_filename = $attachment['physical_filename'];
 
-        // Check if it's a file you're responsible for
-        if ($attachment['extension'] !== 'your_extension_specific') {
-            return;
+        // Find the position of the first underscore
+        $underscore_pos = strpos($physical_filename, '_');
+        $subfolder = '';
+
+        if ($underscore_pos !== false && strlen($physical_filename) > $underscore_pos + 2) {
+            // Extract the first 2 characters after the underscore as the subfolder
+            $subfolder = substr($physical_filename, $underscore_pos + 1, 2);
+            // Build the new full path with the subfolder
+            $local_file = $subfolder . '/' . $physical_filename;
+            if ($subfolder !== '') {
+                $event['physical_filename'] = $local_file;
+                return;
+            }
         }
-        
-        $folder = explode('_', $attachment['physical_filename']);
 
-        $md5_hash = $folder[1];
-        // Use the first two characters of the hash to create a subfolder
-        $subfolder_name = substr($md5_hash, 0, 2);
-        $subfolder = $phpbb_root_path . 'files/' . $subfolder_name . '/';
-
-        $full_file_path = $subfolder . $attachment['physical_filename'];
-
-        // Check if the file exists in the custom subfolder
-        if (file_exists($full_file_path) && is_readable($full_file_path)) {
-            // Override the file path with the path to your custom subfolder
-            $event['local_file'] = $full_file_path;
-        } else {
-            // Optionally, you can handle the case where the file is not found
-            trigger_error('File not found in custom subfolder.', E_USER_WARNING);
-        }
+        // Fallback to the default path if underscore or enough characters are not found
+        $event['physical_filename'] = $physical_filename;
     }
 }
