@@ -29,11 +29,6 @@ class install_acp_module extends \phpbb\db\migration\migration
 
 			['module.add', [
 				'acp',
-				'ACP_CAT_DOT_MODS',
-				'ACP_DIGIOZATTACHINSUBFOLDERS_TITLE'
-			]],
-			['module.add', [
-				'acp',
 				'ACP_DIGIOZATTACHINSUBFOLDERS_TITLE',
 				[
 					'module_basename'	=> '\digioz\digiozattachinsubfolders\acp\main_module',
