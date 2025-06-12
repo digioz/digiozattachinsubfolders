@@ -27,16 +27,15 @@ class install_acp_module extends \phpbb\db\migration\migration
 		return [
 			['config.add', ['digioz_digiozattachinsubfolders_goodbye', 0]],
 
-            ['module.add', [
-                    'acp',
-                    '',
-                    [
-                        'module_basename' => '\digioz\digiozattachinsubfolders\acp\main_module',
-                        'modes' => ['settings'],
-                        'module_langname' => 'ACP_DIGIOZATTACHINSUBFOLDERS_TITLE',
-                    ],
-                ]
-            ],
+			['module.add', [
+                'acp',
+                '',
+                [
+                    'module_basename' => '\digioz\digiozattachinsubfolders\acp\main_module',
+                    'modes' => ['settings'],
+                    'module_langname' => 'ACP_DIGIOZATTACHINSUBFOLDERS_TITLE',
+                ],
+			]],
 		];
 	}
 }
