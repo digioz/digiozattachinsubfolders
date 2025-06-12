@@ -18,7 +18,7 @@ services:
             - '@user'
             - '%digioz.digiozattachinsubfolders.tables.digiozattachinsubfolders_table%'
 
-    digioz.digiozattachinsubfolders.event.listener:
+    digioz.digiozattachinsubfolders.listener:
         class: digioz\digiozattachinsubfolders\event\main_listener
         arguments:
             - '@language'
@@ -37,9 +37,5 @@ services:
 
     digioz.digiozattachinsubfolders.read_listener:
         class: digioz\digiozattachinsubfolders\event\read_listener
-        arguments:
-            - '%core.root_path%'
-            - '@config'
         tags:
             - { name: event.listener }
-
