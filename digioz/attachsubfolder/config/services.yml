@@ -1,0 +1,19 @@
+services:
+    digioz.attachsubfolder.listener:
+        class: digioz\attachsubfolder\event\main_listener
+        arguments:
+            - '%core.root_path%'
+            - '@config'
+            - '@filesystem'
+        tags:
+            - { name: event.listener }
+
+    digioz.attachsubfolder.console.move_attachments:
+        class: digioz\attachsubfolder\console\command\move_attachments
+        arguments:
+            - '@config'
+            - '@dbal.conn'
+            - '@filesystem'
+            - '%core.root_path%'
+        tags:
+            - { name: console.command }
