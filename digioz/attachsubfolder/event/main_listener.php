@@ -54,7 +54,6 @@ class main_listener implements EventSubscriberInterface
     public function on_modify_submit_post_data($event)
     {
         // This might be called before the post is created
-        error_log("modify_submit_post_data called");
     }
 
     public function on_send_file_to_browser_before($event)
