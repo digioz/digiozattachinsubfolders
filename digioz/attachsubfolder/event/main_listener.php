@@ -37,7 +37,9 @@ class main_listener implements EventSubscriberInterface
         $upload_path = $this->phpbb_root_path . $this->config['upload_path'] . '/';
         
         // Debug logging to see what we have
-        error_log("submit_post_end: post_id=$post_id, topic_id=$topic_id");
+        if (!empty($this->config['debug'])) {
+            error_log("submit_post_end: post_id=$post_id, topic_id=$topic_id");
+        }
         
         foreach ($event['data']['attachment_data'] as $attachment) {
             if (empty($attachment['physical_filename']) || !empty($attachment['is_orphan'])) {
