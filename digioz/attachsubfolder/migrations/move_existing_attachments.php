@@ -66,7 +66,9 @@ class move_existing_attachments extends \phpbb\db\migration\migration
                 }
             } catch (Exception $e) {
                 // Log error but continue with other files
-                error_log('Failed to move attachment: ' . $physical_filename . ' - ' . $e->getMessage());
+                if (isset($this->log)) {
+                    $this->log->add('admin', ANONYMOUS, '', 'Failed to move attachment: ' . $physical_filename . ' - ' . $e->getMessage());
+                }
             }
         }
         
