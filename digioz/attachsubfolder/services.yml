@@ -1,0 +1,9 @@
+services:
+    digioz.attachsubfolder.listener:
+        class: digioz\attachsubfolder\event\main_listener
+        arguments:
+            - '%phpbb_root_path%'
+            - '@config'
+            - '@filesystem'
+        tags:
+            - { name: event.subscriber }

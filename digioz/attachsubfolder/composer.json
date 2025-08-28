@@ -1,0 +1,25 @@
+{
+  "name": "digioz/attachsubfolder",
+  "type": "phpbb-extension",
+  "description": "Store attachments in subfolders based on MD5 hash of physical_filename.",
+  "version": "1.0.0",
+  "time": "2025-08-27",
+  "license": "GPL-2.0-only",
+  "authors": [
+    {
+      "name": "DigiOz Multimedia",
+      "email": "support@digioz.com",
+      "homepage": "https://digioz.com",
+      "role": "Developer"
+    }
+  ],
+  "require": {
+    "php": ">=7.1"
+  },
+  "extra": {
+    "display-name": "Attachment Subfolder Storage",
+    "soft-require": {
+      "phpbb/phpbb": ">=3.3.15"
+    }
+  }
+}

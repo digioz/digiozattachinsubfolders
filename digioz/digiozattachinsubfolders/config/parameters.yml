@@ -1,2 +1,0 @@
-parameters:
-    digioz.digiozattachinsubfolders.tables.digiozattachinsubfolders_table: '%core.table_prefix%digioz_digiozattachinsubfolders_table'
