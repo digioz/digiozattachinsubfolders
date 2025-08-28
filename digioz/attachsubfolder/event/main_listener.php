@@ -132,7 +132,9 @@ class main_listener implements EventSubscriberInterface
                         WHERE attach_id = ' . (int) $attach_id;
                 $db->sql_query($sql);
                 
-                error_log("Updated attachment $attach_id: post_id=$post_id, topic_id=$topic_id, path=$new_physical_filename");
+                if (!empty($this->config['debug'])) {
+                    error_log("Updated attachment $attach_id: post_id=$post_id, topic_id=$topic_id, path=$new_physical_filename");
+                }
             }
         } catch (\Exception $e) {
             error_log('Failed to move attachment: ' . $e->getMessage());
